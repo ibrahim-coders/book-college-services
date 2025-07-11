@@ -5,15 +5,25 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, GraduationCap, User, LogOut } from 'lucide-react';
+import { Menu, GraduationCap } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { SignedIn, SignedOut, useUser, UserButton } from '@clerk/nextjs';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function Header() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const { user } = useUser();
+  const { data: session } = useSession();
+  const user = session?.user;
 
+  const getInitials = name => {
+    if (!name) return '';
+    const words = name.trim().split(' ');
+    let initials = '';
+    for (let i = 0; i < Math.min(words.length, 2); i++) {
+      initials += words[i][0];
+    }
+    return initials.toUpperCase();
+  };
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Colleges', href: '/colleges' },
@@ -21,6 +31,7 @@ export default function Header() {
     { name: 'My College', href: '/my-college' },
   ];
 
+  console.log(user);
   const isActive = href => pathname === href;
 
   const NavLink = ({ href, children, className = '' }) => (
@@ -51,7 +62,7 @@ export default function Header() {
             <span className="text-xl font-bold text-slate-900">EduPortal</span>
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map(item => (
               <NavLink key={item.name} href={item.href}>
@@ -62,15 +73,26 @@ export default function Header() {
 
           {/* User Section (Desktop) */}
           <div className="hidden md:flex items-center space-x-4">
-            <SignedIn>
-              <div className="flex items-center gap-3">
-                <UserButton afterSignOutUrl="/" />
-              </div>
-            </SignedIn>
-            <SignedOut>
+            {user ? (
               <div className="flex items-center space-x-2">
-                <Button variant="outline" className="hover:bg-blue-100" asChild>
-                  <Link href="/sign-in">Login</Link>
+                <Link
+                  href="/profile"
+                  className="flex justify-center font-bold text-white items-center text-2xl hover:text-blue-100 w-10 h-10 rounded-full bg-blue-700 text-center"
+                >
+                  {getInitials(user.name)}
+                </Link>
+                <Button onClick={() => signOut()} variant="outline">
+                  Logout
+                </Button>
+              </div>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <Button
+                  onClick={() => signIn()}
+                  variant="outline"
+                  className="hover:bg-blue-100"
+                >
+                  Login
                 </Button>
                 <Button
                   className="bg-[#1A79CE] text-white hover:bg-blue-700"
@@ -79,7 +101,7 @@ export default function Header() {
                   <Link href="/sign-up">Register</Link>
                 </Button>
               </div>
-            </SignedOut>
+            )}
           </div>
 
           {/* Mobile Menu */}
@@ -102,29 +124,31 @@ export default function Header() {
                 ))}
 
                 <div className="border-t pt-4 mt-8">
-                  <SignedIn>
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <UserButton afterSignOutUrl="/" />
-                        <div>
-                          <p className="text-xs text-gray-500">
-                            {user?.emailAddresses[0].emailAddress}
-                          </p>
-                        </div>
-                      </div>
+                  {user ? (
+                    <div className="space-y-2">
+                      <Link
+                        href="/profile"
+                        className="flex justify-center font-bold text-white items-center text-2xl hover:text-blue-100 w-10 h-10 rounded-full bg-blue-700 text-center"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {getInitials(user.name)}
+                      </Link>
+                      <Button
+                        onClick={() => signOut()}
+                        variant="outline"
+                        className="w-full justify-start"
+                      >
+                        Logout
+                      </Button>
                     </div>
-                  </SignedIn>
-
-                  <SignedOut>
+                  ) : (
                     <div className="space-y-2">
                       <Button
+                        onClick={() => signIn()}
                         variant="outline"
                         className="w-full justify-start hover:bg-blue-100"
-                        asChild
                       >
-                        <Link href="/sign-in" onClick={() => setIsOpen(false)}>
-                          Login
-                        </Link>
+                        Login
                       </Button>
                       <Button
                         className="w-full bg-[#1A79CE] text-white hover:bg-blue-700"
@@ -135,7 +159,7 @@ export default function Header() {
                         </Link>
                       </Button>
                     </div>
-                  </SignedOut>
+                  )}
                 </div>
               </div>
             </SheetContent>
