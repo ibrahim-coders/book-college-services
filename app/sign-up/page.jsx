@@ -93,7 +93,7 @@ const SignupPage = () => {
               <div className="w-full">
                 <Label>First Name</Label>
                 <Input
-                  value={firstname}
+                  value={fastname}
                   onChange={e => setFirstname(e.target.value)}
                   required
                   className="mt-2"

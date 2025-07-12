@@ -54,7 +54,7 @@ const SigninPage = () => {
     }
   };
 
-  const handleSocialLogin = async (provider) => {
+  const handleSocialLogin = async provider => {
     setIsLoading(true);
     await signIn(provider, { callbackUrl: '/' });
     setIsLoading(false);

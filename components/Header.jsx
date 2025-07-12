@@ -36,7 +36,7 @@ export default function Header() {
 
   const NavLink = ({ href, children, className = '' }) => (
     <Link
-      href={href || '/'} 
+      href={href || '/'}
       className={cn(
         'px-4 py-2 rounded-lg font-medium transition-all duration-300',
         isActive(href)
@@ -81,8 +81,12 @@ export default function Header() {
                 >
                   {getInitials(user.fastname || user.name)}
                 </Link>
-                <Button className="bg-red-700 cursor-pointer hover:bg-red-800 text-white" onClick={() => signOut() } variant="outline">
-                 <Link href="/sign-in" >  Logout</Link>
+                <Button
+                  className="bg-red-700 cursor-pointer hover:bg-red-800 text-white"
+                  onClick={() => signOut()}
+                  variant="outline"
+                >
+                  Logout
                 </Button>
               </div>
             ) : (

@@ -6,13 +6,11 @@ import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Users, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import collageCamping from '@/public/campaing.png';
-import collageCamping1 from '@/public/Campaign.webp';
 
 const galleryImages = [
   {
     id: 1,
-    url: { collageCamping },
+    url: 'https://media.istockphoto.com/id/2162644435/photo/walking-happy-and-girl-with-friends-at-university-for-learning-bonding-and-talking-with-fun.webp?a=1&b=1&s=612x612&w=0&k=20&c=VZoYUAK9OGQEcbcdEedhWbYZVPbp96WWD-Hmfd6XHGc=',
     title: 'Harvard Class of 2024',
     description: 'Graduation ceremony with 2,000+ graduates',
     year: '2024',
@@ -52,7 +50,7 @@ const galleryImages = [
   },
   {
     id: 6,
-    url: { collageCamping1 },
+    url: 'https://media.istockphoto.com/id/1779070756/photo/two-university-students-walk-down-campus-stairs.webp?a=1&b=1&s=612x612&w=0&k=20&c=6M6XJocLF9P8p2jlAUwZhGGMiosxZcgELucrn7avHNE=',
     title: 'Yale Cultural Festival',
     description: 'Diverse cultural celebrations',
     year: '2024',
@@ -98,7 +96,7 @@ export default function Campus() {
             <div className="p-0">
               <div className="relative group">
                 <Image
-                  src={currentImage}
+                  src={currentImage.url} // Ensure valid `src` value
                   alt={currentImage.title}
                   width={100}
                   height={400}
@@ -182,9 +180,11 @@ export default function Campus() {
                 onClick={() => goToImage(index)}
               >
                 <CardContent className="p-0">
-                  <img
-                    src={image.url}
+                  <Image
+                    src={image.url} // Ensure valid `src` value
                     alt={image.title}
+                    width={100}
+                    height={100}
                     className="w-full h-24 object-cover"
                   />
                 </CardContent>
