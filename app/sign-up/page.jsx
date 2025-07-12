@@ -50,7 +50,6 @@ const SignupPage = () => {
         if (result.error) {
           setErrors({ global: result.error });
         } else {
-          toast.success('Login successful');
           router.push('/');
         }
       }
