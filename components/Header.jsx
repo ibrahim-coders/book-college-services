@@ -24,6 +24,7 @@ export default function Header() {
     }
     return initials.toUpperCase();
   };
+
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Colleges', href: '/colleges' },
@@ -31,12 +32,11 @@ export default function Header() {
     { name: 'My College', href: '/my-college' },
   ];
 
-  console.log(user);
   const isActive = href => pathname === href;
 
   const NavLink = ({ href, children, className = '' }) => (
     <Link
-      href={href}
+      href={href || '/'} 
       className={cn(
         'px-4 py-2 rounded-lg font-medium transition-all duration-300',
         isActive(href)
@@ -79,10 +79,10 @@ export default function Header() {
                   href="/profile"
                   className="flex justify-center font-bold text-white items-center text-2xl hover:text-blue-100 w-10 h-10 rounded-full bg-blue-700 text-center"
                 >
-                  {getInitials(user.name)}
+                  {getInitials(user.fastname || user.name)}
                 </Link>
-                <Button onClick={() => signOut()} variant="outline">
-                  Logout
+                <Button className="bg-red-700 cursor-pointer hover:bg-red-800 text-white" onClick={() => signOut() } variant="outline">
+                 <Link href="/sign-in" >  Logout</Link>
                 </Button>
               </div>
             ) : (
@@ -131,7 +131,7 @@ export default function Header() {
                         className="flex justify-center font-bold text-white items-center text-2xl hover:text-blue-100 w-10 h-10 rounded-full bg-blue-700 text-center"
                         onClick={() => setIsOpen(false)}
                       >
-                        {getInitials(user.name)}
+                        {getInitials(user.fastname || user.name)}
                       </Link>
                       <Button
                         onClick={() => signOut()}

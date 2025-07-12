@@ -26,9 +26,9 @@ export default function ReviewsSection() {
   };
 
   return (
-    <section className="py-20 bg-muted/30">
+    <section className="pt-6 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-4">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-600 mb-6">
             Student Reviews
           </h2>
@@ -91,31 +91,25 @@ export default function ReviewsSection() {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center">
           <div className="bg-gradient-card rounded-2xl p-8 border border-border/50 shadow-card max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
-              Share Your Experience
-            </h3>
+            <h3 className="text-2xl font-bold  mb-4">Share Your Experience</h3>
             <p className="text-muted-foreground mb-6">
               Have you studied at one of our partner institutions? Share your
               experience and help future students make informed decisions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <div className="bg-primary/10 rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-primary mb-1">4.8</div>
-                <div className="text-sm text-muted-foreground">
-                  Average Rating
-                </div>
+              <div className="bg-blue-500 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-white  mb-1">4.8</div>
+                <div className="text-sm text-white ">Average Rating</div>
               </div>
-              <div className="bg-primary/10 rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-primary mb-1">150+</div>
-                <div className="text-sm text-muted-foreground">
-                  Total Reviews
-                </div>
+              <div className="bg-blue-500 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-white  mb-1">150+</div>
+                <div className="text-sm text-white ">Total Reviews</div>
               </div>
-              <div className="bg-primary/10 rounded-lg p-4 text-center">
-                <div className="text-2xl font-bold text-primary mb-1">95%</div>
-                <div className="text-sm text-muted-foreground">Recommended</div>
+              <div className="bg-blue-500 rounded-lg p-4 text-center">
+                <div className="text-2xl font-bold text-white mb-1">95%</div>
+                <div className="text-sm text-white ">Recommended</div>
               </div>
             </div>
           </div>

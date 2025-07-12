@@ -30,7 +30,7 @@ const SignupPage = () => {
 
     try {
       const res = await axios.post('/api/users', {
-        fasttname,
+        fastname,
         lastname,
         email,
         phone,

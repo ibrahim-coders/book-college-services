@@ -5,11 +5,14 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ChevronLeft, ChevronRight, Users, Calendar } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import collageCamping from '@/public/campaing.png';
+import collageCamping1 from '@/public/Campaign.webp';
 
 const galleryImages = [
   {
     id: 1,
-    url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9d1?w=800&h=600&fit=crop',
+    url: { collageCamping },
     title: 'Harvard Class of 2024',
     description: 'Graduation ceremony with 2,000+ graduates',
     year: '2024',
@@ -49,7 +52,7 @@ const galleryImages = [
   },
   {
     id: 6,
-    url: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop',
+    url: { collageCamping1 },
     title: 'Yale Cultural Festival',
     description: 'Diverse cultural celebrations',
     year: '2024',
@@ -89,18 +92,20 @@ export default function Campus() {
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto">
+        <div className="w-full mx-auto">
           {/* Main Image Display */}
           <Card className="mb-8 overflow-hidden bg-gradient-card border-0 shadow-academic">
             <div className="p-0">
               <div className="relative group">
-                <img
-                  src={currentImage.url}
+                <Image
+                  src={currentImage}
                   alt={currentImage.title}
-                  className="w-full h-[300px] md:h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  width={100}
+                  height={400}
+                  className="w-full h-[300px] md:h-[500px] object-cover transition-transform duration-700 hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 {/* Navigation Buttons */}
                 <Button
                   variant="ghost"
@@ -118,7 +123,6 @@ export default function Campus() {
                 >
                   <ChevronRight className="h-6 w-6" />
                 </Button>
-
                 {/* Image Info */}
                 <div className="absolute bottom-6 left-6 right-6">
                   <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">

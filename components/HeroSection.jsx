@@ -28,9 +28,9 @@ export default function HeroSection() {
           {/* Main Heading */}
           <div className="space-y-6 mb-12">
             <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-              Discover Your Perfect
-              <span className="block text-transparent bg-gradient-to-r from-blue-300 to-teal-300 bg-clip-text">
-                College Experience
+              Increasing College Graduates
+              <span className="block text-transparent bg-gradient-to-r from-emerald-500 to-emerald-600 bg-clip-text">
+                to Strengthen California
               </span>
             </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto">

@@ -24,7 +24,15 @@ export const GET = async req => {
       );
     }
     return NextResponse.json(
-      { success: true, user: user.toObject() },
+      {
+        success: true,
+        user: {
+          email: user.email,
+          fastname: user.fastname,
+          lastname: user.lastname,
+          phone: user.phone,
+        },
+      },
       { status: 200 }
     );
   } catch (error) {
