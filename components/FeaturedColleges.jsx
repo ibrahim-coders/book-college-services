@@ -8,8 +8,8 @@ export default function FeaturedColleges() {
   const featuredColleges = colleges.slice(0, 3);
 
   return (
-    <section className="py-6 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="w-full py-6 bg-white">
+      <div className="container mx-auto ">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Featured Colleges
@@ -20,7 +20,7 @@ export default function FeaturedColleges() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 px-2">
           {featuredColleges.map(college => (
             <CollegeCard key={college.id} college={college} />
           ))}

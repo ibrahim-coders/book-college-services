@@ -13,7 +13,7 @@ export default function Home() {
     <div className="min-h-screen">
       <HeroSection />
       {/* search Seaction */}
-      <section className="py-20 bg-muted">
+      <section className="w-full mx-auto py-20 bg-muted">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -24,8 +24,8 @@ export default function Home() {
               institutions to find the perfect match for your academic goals.
             </p>
           </div>
-          <div className="w-full max-w-2xl mx-auto px-4">
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 bg-white shadow rounded p-4">
+          <div className="w-full  mx-auto px-4">
+            <div className="container mx-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-2 bg-white shadow rounded p-4">
               <SearchBar />
             </div>
           </div>

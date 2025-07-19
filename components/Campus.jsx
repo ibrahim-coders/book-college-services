@@ -10,7 +10,7 @@ import Image from 'next/image';
 const galleryImages = [
   {
     id: 1,
-    url: 'https://media.istockphoto.com/id/2162644435/photo/walking-happy-and-girl-with-friends-at-university-for-learning-bonding-and-talking-with-fun.webp?a=1&b=1&s=612x612&w=0&k=20&c=VZoYUAK9OGQEcbcdEedhWbYZVPbp96WWD-Hmfd6XHGc=',
+    url: 'https://images.unsplash.com/photo-1590579491624-f98f36d4c763?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     title: 'Harvard Class of 2024',
     description: 'Graduation ceremony with 2,000+ graduates',
     year: '2024',
@@ -96,7 +96,7 @@ export default function Campus() {
             <div className="p-0">
               <div className="relative group">
                 <Image
-                  src={currentImage.url} // Ensure valid `src` value
+                  src={currentImage.url}
                   alt={currentImage.title}
                   width={100}
                   height={400}

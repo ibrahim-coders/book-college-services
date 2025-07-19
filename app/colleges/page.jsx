@@ -37,7 +37,7 @@ export default function Colleges() {
     });
 
   return (
-    <div className="min-h-screen bg-">
+    <div className="min-h-screen ">
       {/* Header */}
       <section className=" py-6">
         <div className="container mx-auto px-4">
@@ -146,7 +146,7 @@ export default function Colleges() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredAndSortedColleges.map(college => (
               <CollegeCard
                 key={college.id}

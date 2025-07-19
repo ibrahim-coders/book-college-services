@@ -42,8 +42,8 @@ export default function SearchBar() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
-      <Card className="bg-gradient-card border-0 shadow-academic">
+    <div className="w-full ">
+      <Card className="bg-slate-100 border-0 shadow rounded max-w-2xl mx-auto pt-4">
         <div className="p-6">
           <div className="flex items-center space-x-2">
             <div className="relative flex-1">
@@ -79,7 +79,7 @@ export default function SearchBar() {
       </Card>
 
       {showResults && (
-        <div className="mt-8 space-y-6">
+        <div className="w-full mt-8 space-y-6">
           <div className="text-center">
             <h3 className="text-2xl font-bold text-foreground mb-2">
               Search Results

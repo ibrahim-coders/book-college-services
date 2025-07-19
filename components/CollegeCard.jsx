@@ -1,10 +1,24 @@
+'use client';
+
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Calendar, MapPin, Star, Users, Trophy, BookOpen } from 'lucide-react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 
 export default function CollegeCard({ college, showDetailedInfo = false }) {
+  const { data: session } = useSession();
+  const user = session?.user;
+
+  const handleNavigation = href => {
+    if (!user) {
+      window.location.href = '/sign-in'; // Redirect to login if not logged in
+    } else {
+      window.location.href = href; // Navigate to the target page if logged in
+    }
+  };
+
   const formatDate = dateString => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -14,7 +28,7 @@ export default function CollegeCard({ college, showDetailedInfo = false }) {
   };
 
   return (
-    <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] bg-[#F4F6F8] border border-gray-200 rounded-xl">
+    <Card className="w-full group overflow-hidden hover:shadow-lg transition-all duration-300 hover:scale-[1.02] bg-[#F4F6F8] border border-gray-200 rounded-xl">
       {/* Image Section */}
       <div className="relative overflow-hidden h-48">
         <img
@@ -119,15 +133,22 @@ export default function CollegeCard({ college, showDetailedInfo = false }) {
         </div>
       </div>
 
-      {/* Button */}
-      <div className="px-5 ">
+      {/* Buttons */}
+      <div className="px-5 space-y-2">
         <Button
           variant="academic"
           className="w-full bg-blue-600 text-white hover:bg-blue-700 rounded-md py-2 transition-all"
-          asChild
+          onClick={() => handleNavigation(`/college/${college.id}`)}
         >
-          <Link href={`/college/${college.id}`}>View Details</Link>
+          View Details
         </Button>
+        {/* <Button
+          variant="outline"
+          className="w-full border-blue-600 text-blue-600 hover:bg-blue-100 rounded-md py-2 transition-all"
+          onClick={() => handleNavigation('/my-college')}
+        >
+          Go to My College
+        </Button> */}
       </div>
     </Card>
   );
